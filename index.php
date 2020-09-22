@@ -1,28 +1,35 @@
 <?php
 
+// this file is created from the form in update.html
 $file = fopen("update.txt", "r");
 
+// load variables for the progress meter.
 $goal = fgets($file);
 $raised = fgets($file);
 $progress = fgets($file);
 $updated = fgets($file);
 $deadline = fgets($file);
 
-
+// test values for the progress meter.
 //$goal = "$20,000";
 //$raised = "$1,050";
 //$progress = "5%";
 //$updated = "Aug. 12, 2020";
 //$deadline = "Oct. 26, 2020";
 
+// this function loads the data from a single file and builds an set of list items from the contents.
 function list_scouts($arg)
 {
+
+  // open the data file.
   $file = fopen($arg, 'r');
+
+  // loop over the contents.
   while(( $data = fgetcsv($file)) !== FALSE)
   {
+    // for each line, generate a <li> html entity with the Scout name and the Trails End URL.
     $url = "https://www.trails-end.com/store/scout/" . trim($data[1]);
     echo "<li><a href=\"$url\">" . trim($data[0]) . "</a></li>\n";
-    //echo "<li><a href=\"$url\" . $data[1] . "\">" . $data[0] . "</a></li> \n";
   }
 }
 
@@ -145,32 +152,6 @@ function list_scouts($arg)
             </li>
         </ul>
     </div>
-
-      <!--<div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-      </div> -->
     </nav>
 
 <main role="main">
@@ -219,34 +200,32 @@ function list_scouts($arg)
       <div class="col">&nbsp;</div>
     </div>
 
-
-
     <div class="row" style="margin-bottom:50px;">
 
       <div class="col-6 col-sm-4 col-md-4">
         <h2>Lion</h2>
         <p><img src="./img/lion_150px.png" style="width:100px;"></p>
-	      <p><?php list_scouts('./data/lion.txt'); ?></p>
+        <p><?php list_scouts('./data/lion.txt'); ?></p>
       </div>
       <div class="col-6 col-sm-4 col-md-4">
         <h2>Tiger</h2>
         <p><img src="./img/tiger_150px.jpg" style="width:100px;"></p>
-	      <p><?php list_scouts('./data/tiger.txt'); ?></p>
+        <p><?php list_scouts('./data/tiger.txt'); ?></p>
       </div>
       <div class="col-6 col-sm-4 col-md-4">
         <h2>Wolf</h2>
         <p><img src="./img/wolf_150px.jpg" style="width:100px;"></p>
-	      <p><?php list_scouts('./data/wolf.txt'); ?></p>
+        <p><?php list_scouts('./data/wolf.txt'); ?></p>
       </div>
       <div class="col-6 col-sm-4 col-md-4">
         <h2>Bear</h2>
         <p><img src="./img/bear_150px.jpg" style="width:100px;"></p>
-  	    <p><?php list_scouts('./data/bear.txt'); ?></p>
+        <p><?php list_scouts('./data/bear.txt'); ?></p>
       </div>
       <div class="col-6 col-sm-4 col-md-4">
         <h2>Webelos</h2>
         <p><img src="./img/webelos_150px.png" style="height:100px";></p>
-	      <p><?php list_scouts('./data/webelos.txt'); ?></p>
+        <p><?php list_scouts('./data/webelos.txt'); ?></p>
       </div>
       <div class="col-6 col-sm-4 col-md-4">
         <h2>Arrow of Light</h2>
@@ -276,8 +255,11 @@ function list_scouts($arg)
   <br>Part of the <a href="http://1bsa.org" target="_blank">Greater Alabama Council</a>, <a href="http://scouting.org/" target="_blank">Boy Scouts of America</a>
   <br>Chartered by <a href="https://holyspirithsv.com/">Holy Spirit Catholic Church</a> since 1967.</p>
 </footer>
+    <!-- Begin Bootstrap 4.5 via CDN -->
+    <!-- This stuff does all of the layout and design work. -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <!-- End Bootstrap 4.5 via CDN -->
   </body>
 </html>
